@@ -1,0 +1,17 @@
+# This file contains all of the game assets so that the engine can easily access them from the filesystem
+# One asset per line however an "asset" may comprise of more than one file
+# Each line follows this format:
+# -------------------------------
+# <TYPE> <FILENAME> <ASSETNAME> <FLAGS>
+# -------------------------------
+#
+# Note however that the filename omits file extensions. 
+# See the type key below for details on how the engine discovers each asset type.
+# You may also peruse asset.h and asset.cpp for additional information
+# 
+# SHADEVF (*.vert & *.frag) - Shader pair of vertex and fragment shaders, engine searches in ./shaders/ directory for two files that are named with <FILENAME> with the appropriate extension
+#
+
+
+SHADEVF standard standard precompile
+MESH suzanne suzanne none
