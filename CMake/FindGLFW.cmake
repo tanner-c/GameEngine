@@ -5,6 +5,7 @@ if (GLFW_INCLUDE_DIR AND GLFW_LIBRARY)
     set(GLFW_FOUND TRUE)
     add_library(GLFW::GLFW UNKNOWN IMPORTED)
     set_target_properties(GLFW::GLFW PROPERTIES IMPORTED_LOCATION ${GLFW_LIBRARY})
+    set_target_properties(GLFW::GLFW PROPERTIES INTERFACE_INCLUDE_DIRECTORIES ${GLFW_INCLUDE_DIR})
 endif()
 
 include(FindPackageHandleStandardArgs)
