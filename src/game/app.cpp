@@ -14,7 +14,7 @@ App::App()
   glfwInit();
 
   // TODO: Don't have hardcoded values for window config
-  assetManager = new AssetManager();
+  assetManager = new Assets::AssetManager();
   windowManager = new WindowManager(800, 600, false, "OpenGLSandbox");
   pipeline = new GFXPipeline();
 }
@@ -45,6 +45,26 @@ void App::render() {
   pipeline->draw();
   windowManager->swap();
   active = !windowManager->pollEvents();
+}
+
+void App::programArgs(int argc, char *argv[]) {
+  for (int i = 1; i < (argc); i++) {
+    std::string a(argv[i]);
+    
+    if (a.find("--") != std::string::npos) {
+      auto b = a.substr(2, a.length() - 2);
+      std::string c;
+      
+      if ((i + 1) <= argc) {
+        i++;
+        c = argv[i];
+        args[b] = c;
+        continue;
+      } else {
+        args[b] = "";
+      }
+    }
+  }
 }
 
 void App::tick() {}

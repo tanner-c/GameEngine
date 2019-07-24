@@ -5,7 +5,6 @@
 #include <memory>
 #include <sstream>
 
-using namespace Engine::Assets;
 using namespace Engine;
 
 namespace Game {
@@ -14,9 +13,11 @@ class App {
   bool active;
 
  public:
+  std::map<std::string, std::string> args;
+
   GFXPipeline *pipeline;
   WindowManager *windowManager;
-  AssetManager *assetManager;
+  Assets::AssetManager *assetManager;
 
  public:
   ~App();
@@ -27,6 +28,8 @@ class App {
   void begin();
   void tick();
   void render();
+  
+  void programArgs(int argc, char *argv[]);
 
   bool isActive();
 

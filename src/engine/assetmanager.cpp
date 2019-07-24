@@ -3,10 +3,12 @@
 #include "mesh.h"
 #include "shader.h"
 #include "shaderprogram.h"
+#include "game/app.h"
 #include <sstream>
 
 using namespace Engine::Assets;
 using namespace Utility::IO;
+using namespace Game;
 
 void AssetManager::buildAsset(std::string &type, std::string &filename,
                               std::string &assetname,
@@ -68,6 +70,9 @@ void AssetManager::constructShaderProgram(std::string &filename,
   assetPool.push_back(program);
 }
 
+AssetManager::AssetManager()
+    : manifestContents{""}, assetPool{std::vector<Asset *>()}, ASSET_DIR{"./assets/"} {};
+
 AssetManager::~AssetManager() {
   for (auto e : assetPool) {
     delete e;
@@ -76,6 +81,14 @@ AssetManager::~AssetManager() {
 
 // TODO: This can likely be made better and prettier. What's a parser?
 void AssetManager::parseManifest() {
+  std::string aDirArgs = App::instance().args["assets_dir"];
+  if (!aDirArgs.empty()) {
+    if (aDirArgs.at(aDirArgs.length() - 1) != '/') {
+      aDirArgs.append("/");
+    }
+      ASSET_DIR = aDirArgs;
+  }
+
   manifestContents = readFile(std::string(ASSET_DIR) + MANIFEST_FILE);
 
   std::stringstream buffer(manifestContents);

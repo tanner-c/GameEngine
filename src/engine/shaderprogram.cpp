@@ -4,6 +4,7 @@
 #include <map>
 
 using namespace Utility::IO;
+using namespace Engine::Assets;
 
 void Engine::Assets::ShaderProgram::bind() const { glUseProgram(glID); }
 

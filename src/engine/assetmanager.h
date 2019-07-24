@@ -4,15 +4,20 @@
 
 namespace Engine {
 namespace Assets {
-constexpr auto MANIFEST_FILE = "manifest", ASSET_DIR = "./assets/",SHADER_DIR = "shaders",
-    MESH_DIR = "meshes", MESH_EXT = ".obj",
-    VERTEX_SHADER_EXT = ".vert", FRAGMENT_SHADER_EXT = ".frag";
+constexpr auto MANIFEST_FILE = "manifest", 
+               SHADER_DIR = "shaders",
+               MESH_DIR = "meshes", 
+               MESH_EXT = ".obj",
+               VERTEX_SHADER_EXT = ".vert", 
+               FRAGMENT_SHADER_EXT = ".frag";
 
 const std::map<std::string, AssetType> manifestTypeToEnum = {
     {"SHADEVF", SHADER_PROGRAM_VERT_FRAG}, {"MESH", MESH}};
 
 class AssetManager {
  private:
+  std::string ASSET_DIR;
+
   std::string manifestContents;
   // TODO: It's incredibly inefficient to load every (even uninitialized) Asset
   // object into memory, like, do better
@@ -26,8 +31,7 @@ class AssetManager {
                               std::vector<std::string> &flags);
 
  public:
-  AssetManager()
-      : manifestContents{""}, assetPool{std::vector<Asset *>()} {};
+  AssetManager();
   ~AssetManager();
 
   void parseManifest();
