@@ -13,9 +13,4 @@ target_include_directories(game PRIVATE .)
 
 set_property(TARGET game PROPERTY CXX_STANDARD 11)
 set_property(TARGET game PROPERTY CXX_STANDARD_REQUIRED ON)
-
-add_custom_command(TARGET game POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-                ${CMAKE_SOURCE_DIR}/assets
-                ${CMAKE_CURRENT_BINARY_DIR}/assets
-        )
+set_property(TARGET game PROPERTY VS_DEBUGGER_COMMAND_ARGUMENTS "--assets_dir ${GAME_ASSETS_DIR}")

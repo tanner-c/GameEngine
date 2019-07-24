@@ -2,9 +2,13 @@ cmake_minimum_required(VERSION 3.15)
 project(GameEngine)
 list(APPEND CMAKE_MODULE_PATH "${GameEngine_SOURCE_DIR}/CMake")
 
-if(CMAKE_BUILD_TYPE STREQUAL "")
-    set(CMAKE_BUILD_TYPE Debug)
-endif()
+set(GAME_ASSET_COPY OFF CACHE BOOL "Copy assets to game directory upon build")
+set(GAME_ASSETS_DIR "${GameEngine_SOURCE_DIR}/assets" CACHE PATH "Path to the game assets directory")
+set(GAME_ASSETS_MANIFEST "${GAME_ASSETS_DIR}/manifest" CACHE FILEPATH "Path to the game assets manifest")
+
+file(GLOB_RECURSE GAME_ASSETS_SHADERS "${GAME_ASSETS_DIR}/shaders/*")
+
+set(COMAND_COPY_ASSETS "${CMAKE_COMMAND} -E copy_directory ${GAME_ASSETS_DIR} ${GAME_BINARY_DIR}/assets")
 
 if(WIN32)
     set(GLEW_USE_STATIC_LIBS ON)
@@ -15,19 +19,17 @@ find_package(GLEW REQUIRED)
 find_package(GLFW REQUIRED)
 find_package(GLM REQUIRED)
 
-if (NOT OPENGL_FOUND AND (NOT TARGET OpenGL::GL OR NOT OPENGL_INCLUDE_DIR))
-    message(SEND_ERROR "IMPORTANT: OpenGL was unable to be located. Please ensure that OPENGL_opengl_LIBRARY and OPENGL_INCLUDE_DIR are set.")
-endif()
-
-if (NOT GLEW_FOUND AND (NOT TARGET GLEW::GLEW))
-    if (WIN32)
-        message(SEND_ERROR "IMPORTANT: GLEW was unable to be located. Please ensure that GLEW_INCLUDE_DIR and GLEW_STATIC_LIBRARY_* are set.")
-    else()
-        message(SEND_ERROR "IMPORTANT: GLEW was unable to be located. Please ensure that GLEW_INCLUDE_DIR and GLEW_SHARED_LIBRARY_* are set.")
-    endif()
-endif()
-
 add_subdirectory(src)
 
-file(GLOB_RECURSE ASSET_FILES assets/**/*)
-source_group(Assets ${ASSET_FILES})
+get_property(GAME_BINARY_DIR TARGET game PROPERTY BINARY_DIR)
+source_group(shaders FILES ${ASSETS_SHADERS})
+
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(GAME_ASSETS_COPY ON)
+endif()
+
+if(GAME_ASSETS_COPY)
+    add_custom_target(assets ALL SOURCES ${GAME_ASSETS_MANIFEST} ${GAME_ASSETS_SHADERS})
+else()
+    add_custom_target(assets ALL SOURCES ${GAME_ASSETS_MANIFEST} ${GAME_ASSETS_SHADERS} COMMAND ${COMMAND_COPY_ASSETS})
+endif()
