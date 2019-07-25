@@ -11,19 +11,21 @@ namespace Assets {
 // TODO: This would likely fit better elsewhere
 
 struct Transform {
-  Transform()
-      : matTranslation{glm::mat4(1.f)},
-        matRotation{glm::mat4(1.f)}, matScale{glm::mat4(1.f)} {};
+  Transform() : matTranslation{glm::mat4(1.f)},
+                matRotation{glm::mat4(1.f)},
+                matScale{glm::mat4(1.f)} {};
 
-  glm::mat4 getMatrix() { return matTranslation * matRotation * matScale; }
+  glm::mat4 getMatrix() {
+    return matTranslation * matRotation * matScale;
+  }
 
   void translate(glm::vec3 vector) {
     matTranslation = glm::translate(matTranslation, vector);
   }
 
-  // TODO: Rotations
-
-  void scale(glm::vec3 vector) { matScale = glm::scale(vector); }
+  void scale(glm::vec3 vector) {
+    matScale = glm::scale(vector);
+  }
 
  private:
   glm::mat4 matTranslation;

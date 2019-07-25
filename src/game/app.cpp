@@ -7,8 +7,7 @@
 using namespace Utility::IO;
 using namespace Game;
 
-App::App()
-    : active{false} {
+App::App() : active{false} {
   glfwSetErrorCallback(&glfwError);
 
   glfwInit();
@@ -67,6 +66,11 @@ void App::programArgs(int argc, char *argv[]) {
   }
 }
 
-void App::tick() {}
+void App::tick() {
+  
+}
 
-bool App::isActive() { return active; }
+bool App::isActive() {
+  return active;
+  
+}

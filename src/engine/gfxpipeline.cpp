@@ -17,8 +17,7 @@ void GFXPipeline::configGLContext() {
 }
 
 void GFXPipeline::initGL() {
-  glfwMakeContextCurrent(
-      App::instance().windowManager->getWindowConfig().window);
+  glfwMakeContextCurrent(App::instance().windowManager->getWindowConfig().window);
 
   if (!gladLoadGL()) {
     Logger::instance().log(LOG_SEVERITY_FATAL, "Unable to initialize glad!");
@@ -37,13 +36,12 @@ void GFXPipeline::initGL() {
 
 void GFXPipeline::draw() {
   // TODO: Test code, please remove
-  static Mesh *myCube = nullptr;
+  static Mesh* myCube = nullptr;
   static ShaderProgram *myShader = nullptr;
 
   if (myCube == nullptr || myShader == nullptr) {
     myCube = App::instance().assetManager->getAssets<Mesh>("suzanne")[0];
-    myShader =
-        App::instance().assetManager->getAssets<ShaderProgram>("standard")[0];
+    myShader = App::instance().assetManager->getAssets<ShaderProgram>("standard")[0];
 
     myCube->load();
     myShader->load();
@@ -55,9 +53,7 @@ void GFXPipeline::draw() {
 }
 
 void GFXPipeline::precompileShaders() {
-  std::vector<ShaderProgram *> shaders =
-      App::instance().assetManager->getAssets<ShaderProgram>({"precompile"},
-                                                             false);
+  std::vector<ShaderProgram *> shaders = App::instance().assetManager->getAssets<ShaderProgram>({"precompile"}, false);
 
   for (auto s : shaders) {
     s->load();

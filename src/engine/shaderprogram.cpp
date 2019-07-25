@@ -6,9 +6,9 @@
 using namespace Utility::IO;
 using namespace Engine::Assets;
 
-void Engine::Assets::ShaderProgram::bind() const { glUseProgram(glID); }
+void ShaderProgram::bind() const { glUseProgram(glID); }
 
-void Engine::Assets::ShaderProgram::unbind() const { glUseProgram(0); }
+void ShaderProgram::unbind() const { glUseProgram(0); }
 
 GLuint ShaderProgram::getGLID() const { return glID; }
 

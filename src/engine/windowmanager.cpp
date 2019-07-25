@@ -35,26 +35,34 @@ WindowConfig WindowManager::getWindowConfig() { return winConfig; }
 
 void WindowManager::createWindowAndContext() {
   if (winConfig.window != nullptr) {
-    Logger::instance().log(
-        LOG_SEVERITY_FATAL,
-        "Additional call to createWindowAndContext(). There can only be one!");
+    Logger::instance().log(LOG_SEVERITY_FATAL, "Additional call to createWindowAndContext(). There can only be one!");
   }
 
   winConfig.window =
-      glfwCreateWindow((int) winConfig.windowSize.x, (int) winConfig.windowSize.y,
-                       winConfig.title.c_str(), winConfig.displayMonitor, NULL);
+      glfwCreateWindow((int) winConfig.windowSize.x,
+                       (int) winConfig.windowSize.y,
+                       winConfig.title.c_str(),
+                       winConfig.displayMonitor, NULL);
 }
 
-void WindowManager::swap() { glfwSwapBuffers(winConfig.window); }
+void WindowManager::swap() {
+  glfwSwapBuffers(winConfig.window);
+  
+}
 
-glm::vec2 WindowManager::getWindowSize() { return this->winConfig.windowSize; }
+glm::vec2 WindowManager::getWindowSize() {
+  return this->winConfig.windowSize;
+  
+}
 
 bool WindowManager::pollEvents() {
   glfwPollEvents();
   return glfwWindowShouldClose(winConfig.window);
 }
 
-bool WindowManager::getIsFullscreen() { return winConfig.fullscreen; }
+bool WindowManager::getIsFullscreen() {
+  return winConfig.fullscreen;
+}
 
 void WindowManager::setIsFullscreen(bool fullscreen) {
   // TODO: Implement

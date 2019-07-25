@@ -19,15 +19,12 @@ void AssetManager::buildAsset(std::string &type, std::string &filename,
   }
   catch (std::exception err) {
     // TODO: Un-Applefy/Generify this message
-    Logger::instance().log(LOG_SEVERITY_FATAL,
-                           "Unable to properly parse manifest file. Please "
-                           "check syntax and try again.");
+    Logger::instance().log(LOG_SEVERITY_FATAL, "Unable to properly parse manifest file. Please check syntax and try again.");
   }
 
   switch (t) {
     case SHADER_PROGRAM_VERT_FRAG:
-      // TODO: It might be a good idea to write a class that represents a file
-      // path
+      // TODO: It might be a good idea to write a class that represents a file path
       constructShaderProgram(filename, assetname, flags);
       return;
 
@@ -36,7 +33,8 @@ void AssetManager::buildAsset(std::string &type, std::string &filename,
   }
 }
 
-void AssetManager::constructMesh(std::string &filename, std::string &assetname,
+void AssetManager::constructMesh(std::string &filename,
+                                 std::string &assetname,
                                  std::vector<std::string> &flags) {
 
   std::string meshPath = ASSET_DIR;
@@ -87,7 +85,6 @@ void AssetManager::parseManifest() {
 
   // TODO: Add flag validation?
   std::vector<std::string> flags;
-
   std::vector<std::string> tokens;
 
   try {
