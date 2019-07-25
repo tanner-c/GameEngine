@@ -65,9 +65,6 @@ void AssetManager::constructShaderProgram(std::string &filename,
   assetPool.push_back(program);
 }
 
-AssetManager::AssetManager()
-    : manifestContents{""}, assetPool{std::vector<Asset *>()}, ASSET_DIR{"./assets/"} {};
-
 AssetManager::~AssetManager() {
   for (auto e : assetPool) {
     delete e;

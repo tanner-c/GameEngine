@@ -24,7 +24,7 @@ class AssetManager {
                               std::vector<std::string> &flags);
 
  public:
-  AssetManager();
+  AssetManager() : manifestContents{""}, assetPool{std::vector<Asset *>()}, ASSET_DIR{"./assets/"} {};;
   ~AssetManager();
 
   void parseManifest();
