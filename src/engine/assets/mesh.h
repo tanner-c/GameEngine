@@ -1,6 +1,6 @@
 #pragma once
 #include "asset.h"
-#include "shaderprogram.h"
+#include "graphics/shaderprogram.h"
 #include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>

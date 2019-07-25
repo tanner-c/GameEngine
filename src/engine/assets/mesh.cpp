@@ -1,5 +1,5 @@
 #include "mesh.h"
-#include "io.h"
+#include "utilities/io.h"
 #include <sstream>
 
 using namespace Engine::Assets;

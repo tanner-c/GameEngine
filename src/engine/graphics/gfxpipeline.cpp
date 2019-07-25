@@ -1,7 +1,7 @@
 #include "gfxpipeline.h"
 #include "game/app.h"
 #include "shaderprogram.h"
-#include "mesh.h"
+#include "assets/mesh.h"
 
 using namespace Utility::IO;
 using namespace Engine::Assets;
@@ -35,21 +35,7 @@ void GFXPipeline::initGL() {
 }
 
 void GFXPipeline::draw() {
-  // TODO: Test code, please remove
-  static Mesh* myCube = nullptr;
-  static ShaderProgram *myShader = nullptr;
-
-  if (myCube == nullptr || myShader == nullptr) {
-    myCube = App::instance().assetManager->getAssets<Mesh>("suzanne")[0];
-    myShader = App::instance().assetManager->getAssets<ShaderProgram>("standard")[0];
-
-    myCube->load();
-    myShader->load();
-  }
-
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-  myCube->draw(myShader, (projection * view));
 }
 
 void GFXPipeline::precompileShaders() {

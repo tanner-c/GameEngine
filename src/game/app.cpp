@@ -1,5 +1,4 @@
 #include "app.h"
-#include "engine/mesh.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>

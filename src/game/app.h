@@ -1,7 +1,7 @@
 #pragma once
-#include "engine/assetmanager.h"
-#include "engine/gfxpipeline.h"
-#include "engine/windowmanager.h"
+#include "engine/assets/assetmanager.h"
+#include "engine/graphics/gfxpipeline.h"
+#include "engine/utilities/windowmanager.h"
 #include <memory>
 #include <sstream>
 

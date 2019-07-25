@@ -1,7 +1,7 @@
 #include "assetmanager.h"
-#include "io.h"
-#include "mesh.h"
-#include "shaderprogram.h"
+#include "utilities/io.h"
+#include "assets/mesh.h"
+#include "graphics/shaderprogram.h"
 #include "game/app.h"
 #include <sstream>
 

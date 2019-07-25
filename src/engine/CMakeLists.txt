@@ -1,24 +1,6 @@
-set(ENGINE_NS_ASSETS
-        asset.h
-        assetmanager.cpp
-        assetmanager.h
-        mesh.cpp
-        mesh.h
-        shaderprogram.cpp
-        shaderprogram.h
-        CACHE INTERNAL "All files under Engine::Assets namespace")
-
-set(ENGINE_NS_UTILITIES
-        io.cpp
-        io.h
-        CACHE INTERNAL "All files under Engine::Utilities namespace")
-
-set(ENGINE_NS_GRAPHICS
-        windowmanager.cpp
-        windowmanager.h
-        gfxpipeline.cpp
-        gfxpipeline.h
-        CACHE INTERNAL "All files under Engine::Graphics namespace")
+file(GLOB ENGINE_NS_ASSETS assets/*.cpp assets/*.h)
+file(GLOB ENGINE_NS_UTILITIES utilities/*.cpp utilities/*.h)
+file(GLOB ENGINE_NS_GRAPHICS graphics/*.cpp graphics/*.h)
 
 source_group(Engine\\Assets FILES ${ENGINE_NS_ASSETS})
 source_group(Engine\\Utilities FILES ${ENGINE_NS_UTILITIES})
