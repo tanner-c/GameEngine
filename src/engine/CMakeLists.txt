@@ -14,8 +14,6 @@ set(ENGINE_NS_UTILITIES
         CACHE INTERNAL "All files under Engine::Utilities namespace")
 
 set(ENGINE_NS_GRAPHICS
-        shader.cpp
-        shader.h
         windowmanager.cpp
         windowmanager.h
         gfxpipeline.cpp
