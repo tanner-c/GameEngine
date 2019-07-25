@@ -3,23 +3,11 @@
 #include <sstream>
 #include <string>
 #include <vector>
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include <glad/glad.h>
 
 namespace Utility {
 namespace IO {
 void glfwError(int code, const char *description);
-void GLAPIENTRY
-glMessage(GLenum
-source,
-GLenum type, GLuint
-id,
-GLenum severity,
-    GLsizei
-length,
-const GLchar *message,
-const void *userParam
-);
 
 std::string readFile(std::string path);
 std::vector<std::string> tokenizeString(std::string string, char delim);

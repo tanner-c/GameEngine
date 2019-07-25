@@ -8,11 +8,9 @@ using namespace Engine::Assets;
 using namespace Game;
 
 void GFXPipeline::configGLContext() {
-  glewExperimental = true;
-
   glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
   glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
   glfwWindowHint(GLFW_CONTEXT_NO_ERROR, GLFW_FALSE);
 }
@@ -21,18 +19,13 @@ void GFXPipeline::initGL() {
   glfwMakeContextCurrent(
       App::instance().windowManager->getWindowConfig().window);
 
-  auto result = glewInit();
-
-  if (result != GLEW_OK) {
-    Logger::instance().log(LOG_SEVERITY_FATAL,
-                           (char *) glewGetErrorString(result));
+  if (!gladLoadGL()) {
+    Logger::instance().log(LOG_SEVERITY_FATAL, "Unable to initialize glad!");
   }
 
   glClearColor(1, 0, 0, 1);
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LESS);
-  glEnable(GL_DEBUG_OUTPUT);
-  glDebugMessageCallback(glMessage, 0);
 }
 
 void GFXPipeline::draw() {

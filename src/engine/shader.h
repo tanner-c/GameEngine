@@ -1,8 +1,7 @@
 #pragma once
 #include <string>
 #include "io.h"
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 
 using namespace Utility::IO;

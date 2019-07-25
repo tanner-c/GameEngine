@@ -31,13 +31,5 @@ add_library(engine STATIC ${ENGINE_NS_ASSETS} ${ENGINE_NS_UTILITIES} ${ENGINE_NS
 set_property(TARGET engine PROPERTY CXX_STANDARD 11)
 set_property(TARGET engine PROPERTY CXX_STANDARD_REQUIRED ON)
 
-target_link_libraries(engine OpenGL::GL GLFW::GLFW)
+target_link_libraries(engine OpenGL::GL GLFW::GLFW glad)
 target_include_directories(engine PRIVATE .)
-
-if (WIN32)
-    target_link_libraries(engine GLEW::glew_s)
-    add_compile_definitions(GLEW_STATIC)
-else()
-    target_link_libraries(engine GLEW::glew)
-endif()
-

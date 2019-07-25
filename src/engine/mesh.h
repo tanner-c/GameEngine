@@ -1,8 +1,7 @@
 #pragma once
 #include "asset.h"
 #include "shaderprogram.h"
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include <glad/glad.h>
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
 #include <vector>

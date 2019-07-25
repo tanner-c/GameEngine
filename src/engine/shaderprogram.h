@@ -3,8 +3,8 @@
 #include "shader.h"
 #include <memory>
 #include <string>
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include <glad/glad.h>
+
 
 namespace Engine {
 namespace Assets {

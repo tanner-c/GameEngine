@@ -11,15 +11,11 @@ file(GLOB_RECURSE GAME_ASSETS_MESHES "${GAME_ASSETS_DIR}/meshes/*")
 
 set(COMAND_COPY_ASSETS "${CMAKE_COMMAND} -E copy_directory ${GAME_ASSETS_DIR} ${GAME_BINARY_DIR}/assets")
 
-if(WIN32)
-    set(GLEW_USE_STATIC_LIBS ON)
-endif()
-
 find_package(OpenGL REQUIRED)
-find_package(GLEW REQUIRED)
 find_package(GLFW REQUIRED)
 find_package(GLM REQUIRED)
 
+add_subdirectory(deps)
 add_subdirectory(src)
 
 get_property(GAME_BINARY_DIR TARGET game PROPERTY BINARY_DIR)

@@ -2,27 +2,13 @@
 #include <iostream>
 #include <map>
 #include <sstream>
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include <glad/glad.h>
 #include <chrono>
 
 using namespace Utility::IO;
 
 void Utility::IO::glfwError(int code, const char *description) {
   Logger::instance().log(LOG_SEVERITY_FATAL, description);
-}
-
-void GLAPIENTRY
-Utility::IO::glMessage(GLenum
-source,
-GLenum type, GLuint
-id,
-GLenum severity, GLsizei
-length,
-const GLchar *message,
-const void *userParam
-) {
-  // TODO: Implement this
 }
 
 Logger &Logger::instance() {
