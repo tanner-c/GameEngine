@@ -21,7 +21,7 @@ class Shader {
   ShaderType type;
 
  public:
-  const std::string source;
+  std::string source;
   const std::string path;
 
   Shader(std::string filePath)

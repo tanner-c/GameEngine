@@ -8,6 +8,11 @@ Shader::~Shader() { glDeleteShader(glID); }
 
 void Shader::compile() {
   glID = glCreateShader(type);
+
+  auto versionStatement = std::ostringstream() << "#version 400 core\n";
+
+  source.insert(0, versionStatement.str());
+
   auto sourceCStr = (const GLchar *) source.c_str();
   glShaderSource(glID, 1, &sourceCStr, 0);
   glCompileShader(glID);

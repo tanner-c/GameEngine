@@ -23,6 +23,12 @@ void GFXPipeline::initGL() {
     Logger::instance().log(LOG_SEVERITY_FATAL, "Unable to initialize glad!");
   }
 
+  auto msg = std::stringstream()
+             << "Initialized OpenGL context version: " << GLVersion.major << "."
+             << GLVersion.minor;
+
+  Logger::instance().log(LOG_SEVERITY_NORMAL, msg.str());
+
   glClearColor(1, 0, 0, 1);
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LESS);
