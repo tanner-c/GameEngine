@@ -3,6 +3,8 @@ build/
 .idea/
 .vs/
 
+.DS_Store
+
 # Prerequisites
 *.d
 
