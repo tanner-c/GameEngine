@@ -52,10 +52,10 @@ class Mesh : public Asset {
   // TODO: These need to be exported to gameobject/material/something code after testing
   Transform transform;
 
-  Mesh(std::string name, std::vector<std::string> flags, std::string path,
-       AssetType type)
-      : vertices{std::vector<glm::vec3>()}, uvs{std::vector<glm::vec2>()},
-        normals{std::vector<glm::vec3>()}, Asset(name, flags, path, type) {};
+  Mesh(std::string name, std::vector<std::string> flags, std::string path, AssetType type) : Asset(name, flags, path, type),
+                                                                                             vertices{std::vector<glm::vec3>()},
+                                                                                             uvs{std::vector<glm::vec2>()},
+                                                                                             normals{std::vector<glm::vec3>()} {};
 
   virtual void load() override;
   virtual void release() override;

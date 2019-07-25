@@ -15,8 +15,8 @@ enum ShaderType {
   
 class ShaderProgram : public Asset {
  public:
-  ShaderProgram(std::string name, std::vector<std::string> flags, std::string path)
-      : glID{0}, Asset(name, flags, path, SHADER_PROGRAM_VERT_FRAG) {};
+  ShaderProgram(std::string name, std::vector<std::string> flags, std::string path) : Asset(name, flags, path, SHADER_PROGRAM_VERT_FRAG),
+                                                                                      glID{0} {};
   
   ~ShaderProgram() { release(); }
 

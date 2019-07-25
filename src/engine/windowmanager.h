@@ -14,9 +14,11 @@ struct WindowConfig {
   GLFWmonitor *displayMonitor;
   GLFWwindow *window;
 
-  WindowConfig()
-      : windowSize{glm::vec2(800, 600)}, fullscreen{false}, title{"No title"},
-        displayMonitor{nullptr}, window{nullptr} {};
+  WindowConfig() : windowSize{glm::vec2(800, 600)},
+                   fullscreen{false},
+                   title{"No title"},
+                   displayMonitor{nullptr},
+                   window{nullptr} {};
 };
 
 class WindowManager {

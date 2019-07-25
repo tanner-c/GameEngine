@@ -23,9 +23,11 @@ class Asset {
   bool loaded;
 
  public:
-  Asset(std::string name, std::vector<std::string> flags, std::string path,
-        AssetType type)
-      : name{name}, flags{flags}, path{path}, loaded{false}, type{type} {};
+  Asset(std::string name, std::vector<std::string> flags, std::string path, AssetType type) : loaded{false},
+                                                                                              name{name},
+                                                                                              flags{flags},
+                                                                                              path{path},
+                                                                                              type{type} {};
 
   const std::string name;
   const std::vector<std::string> flags;
