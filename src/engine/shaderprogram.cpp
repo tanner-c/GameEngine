@@ -108,6 +108,8 @@ void ShaderProgram::linkProgram(GLuint vShader, GLuint fShader) {
     
     glDetachShader(glID, vShader);
     glDetachShader(glID, fShader);
+    glDeleteShader(vShader);
+    glDeleteShader(fShader);
   }
 }
 
