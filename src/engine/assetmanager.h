@@ -4,13 +4,6 @@
 
 namespace Engine {
 namespace Assets {
-constexpr auto MANIFEST_FILE = "manifest", 
-               SHADER_DIR = "shaders",
-               MESH_DIR = "meshes", 
-               MESH_EXT = ".obj",
-               VERTEX_SHADER_EXT = ".vert", 
-               FRAGMENT_SHADER_EXT = ".frag";
-
 const std::map<std::string, AssetType> manifestTypeToEnum = {
     {"SHADEVF", SHADER_PROGRAM_VERT_FRAG}, {"MESH", MESH}};
 

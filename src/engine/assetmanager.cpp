@@ -1,7 +1,6 @@
 #include "assetmanager.h"
 #include "io.h"
 #include "mesh.h"
-#include "shader.h"
 #include "shaderprogram.h"
 #include "game/app.h"
 #include <sstream>
@@ -61,11 +60,7 @@ void AssetManager::constructShaderProgram(std::string &filename,
   shaderPath.append("/");
   shaderPath.append(filename);
 
-  auto vShader = new VertexShader(shaderPath + VERTEX_SHADER_EXT);
-  auto fShader = new FragmentShader(shaderPath + FRAGMENT_SHADER_EXT);
-
-  Asset *program =
-      new ShaderProgram(assetname, flags, shaderPath, vShader, fShader);
+  Asset *program = new ShaderProgram(assetname, flags, shaderPath);
 
   assetPool.push_back(program);
 }

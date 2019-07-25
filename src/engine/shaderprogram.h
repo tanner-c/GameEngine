@@ -1,6 +1,5 @@
 #pragma once
 #include "asset.h"
-#include "shader.h"
 #include <memory>
 #include <string>
 #include <glad/glad.h>
@@ -8,17 +7,17 @@
 
 namespace Engine {
 namespace Assets {
+enum ShaderType {
+  SHADER_TYPE_VERTEX = GL_VERTEX_SHADER,
+  SHADER_TYPE_GEOMETRY = GL_GEOMETRY_SHADER,
+  SHADER_TYPE_FRAGMENT = GL_FRAGMENT_SHADER
+};
+  
 class ShaderProgram : public Asset {
  public:
-  std::unique_ptr<VertexShader> vShader;
-  std::unique_ptr<FragmentShader> fShader;
-
- public:
-  ShaderProgram(std::string name, std::vector<std::string> flags,
-                std::string path, VertexShader *vShader,
-                FragmentShader *fShader)
-      : glID{0}, vShader{vShader}, fShader{fShader},
-        Asset(name, flags, path, SHADER_PROGRAM_VERT_FRAG) {};
+  ShaderProgram(std::string name, std::vector<std::string> flags, std::string path)
+      : glID{0}, Asset(name, flags, path, SHADER_PROGRAM_VERT_FRAG) {};
+  
   ~ShaderProgram() { release(); }
 
   virtual void load() override;
@@ -30,6 +29,9 @@ class ShaderProgram : public Asset {
 
  private:
   GLuint glID;
+  
+  GLuint compileShader(const std::string& source, ShaderType type);
+  void linkProgram(GLuint vShader, GLuint fShader);
 };
 } // namespace Assets
 } // namespace Engine

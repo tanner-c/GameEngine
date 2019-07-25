@@ -6,6 +6,13 @@
 namespace Engine {
 namespace Assets {
 
+constexpr auto MANIFEST_FILE = "manifest",
+               SHADER_DIR = "shaders",
+               MESH_DIR = "meshes",
+               MESH_EXT = ".obj",
+               VERTEX_SHADER_EXT = ".vert",
+               FRAGMENT_SHADER_EXT = ".frag";
+
 enum AssetType {
   SHADER_PROGRAM_VERT_FRAG,
   MESH,
@@ -18,7 +25,7 @@ class Asset {
  public:
   Asset(std::string name, std::vector<std::string> flags, std::string path,
         AssetType type)
-      : name{name}, flags{flags}, path{path}, type{type}, loaded{false} {};
+      : name{name}, flags{flags}, path{path}, loaded{false}, type{type} {};
 
   const std::string name;
   const std::vector<std::string> flags;
