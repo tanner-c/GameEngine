@@ -20,7 +20,7 @@ void Logger::log(LogSeverity severity, std::string message) {
   if (severity < minSeverity) {
     return;
   } else {
-    std::cout << message;
+    std::cout << message << std::endl;
   }
 
   if (severity == LOG_SEVERITY_FATAL) {
