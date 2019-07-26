@@ -13,6 +13,16 @@ void ShaderProgram::unbind() const { glUseProgram(0); }
 GLuint ShaderProgram::getGLID() const { return glID; }
 
 void ShaderProgram::load() {
+  static std::string globals = "";
+  
+  if (globals.empty()) {
+    auto globalsPath = path;
+    globalsPath.erase(globalsPath.end() - name.size(), globalsPath.end());
+    globalsPath += "globals.glsl";
+    
+    globals = readFile(globalsPath);
+  }
+  
   //TODO: Allow for more than just vert/frag pairs
   std::ostringstream versionStatement,
                      fragPath,

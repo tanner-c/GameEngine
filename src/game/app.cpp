@@ -1,4 +1,6 @@
 #include "app.h"
+#include "engine/scene/scene.h"
+#include "engine/scene/meshcomponent.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -7,7 +9,7 @@ using namespace Utility::IO;
 using namespace Game;
 
 App::App() : active{false} {
-  glfwSetErrorCallback(&glfwError);
+  //glfwSetErrorCallback(&glfwError);
 
   glfwInit();
 
@@ -29,7 +31,7 @@ App &App::instance() {
   return a;
 }
 
-void App::begin() {
+void App::init() {
   active = true;
 
   assetManager->parseManifest();
@@ -37,6 +39,17 @@ void App::begin() {
   windowManager->createWindowAndContext();
   pipeline->initGL();
   pipeline->precompileShaders();
+  
+  // TODO: Test code, please remove
+  auto s = Engine::Scene::Scene::newScene();
+  auto so = new Engine::Scene::SceneObject();
+  
+  so->name = "suzanne";
+  so->attachComponent<Engine::Scene::Components::MeshComponent>();
+  
+  s->addSceneObject(so);
+  
+  s->start();
 }
 
 void App::render() {
@@ -66,10 +79,9 @@ void App::programArgs(int argc, char *argv[]) {
 }
 
 void App::tick() {
-  
+  Engine::Scene::Scene::currentScene->tick();
 }
 
 bool App::isActive() {
   return active;
-  
 }

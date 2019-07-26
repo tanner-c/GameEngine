@@ -1,13 +1,13 @@
 #include "io.h"
 #include <iostream>
-#include <map>
+#include <fstream>
 #include <sstream>
+#include <vector>
 #include <glad/glad.h>
-#include <chrono>
 
 using namespace Utility::IO;
 
-void Utility::IO::glfwError(int code, const char *description) {
+void glfwError(int code, const char *description) {
   Logger::instance().log(LOG_SEVERITY_FATAL, description);
 }
 

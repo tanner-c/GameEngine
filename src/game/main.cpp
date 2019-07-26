@@ -10,7 +10,7 @@ int main(int argc, char* argv[]) {
     App::instance().programArgs(argc, argv);
   }
 
-  app.begin();
+  app.init();
 
   while (app.isActive()) {
     app.tick();

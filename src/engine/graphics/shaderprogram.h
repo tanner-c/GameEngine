@@ -1,5 +1,5 @@
 #pragma once
-#include "assets/asset.h"
+#include "engine/assets/asset.h"
 #include <memory>
 #include <string>
 #include <glad/glad.h>

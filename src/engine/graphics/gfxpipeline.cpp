@@ -2,6 +2,7 @@
 #include "game/app.h"
 #include "shaderprogram.h"
 #include "assets/mesh.h"
+#include "engine/scene/scene.h"
 
 using namespace Utility::IO;
 using namespace Engine::Assets;
@@ -36,6 +37,7 @@ void GFXPipeline::initGL() {
 
 void GFXPipeline::draw() {
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  Engine::Scene::Scene::currentScene->draw();
 }
 
 void GFXPipeline::precompileShaders() {

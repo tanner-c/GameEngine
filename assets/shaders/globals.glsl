@@ -1,0 +1,8 @@
+#ifndef GLOBALS_GLSL
+#define GLOBALS_GLSL
+
+#define POSITION_ATTRIB_LOCATION 0
+
+#define MVP_UNIFORM_LOCATION 1
+
+#endif

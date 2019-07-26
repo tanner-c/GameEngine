@@ -8,9 +8,10 @@ const std::map<std::string, AssetType> manifestTypeToEnum = {
     {"SHADEVF", SHADER_PROGRAM_VERT_FRAG}, {"MESH", MESH}};
 
 class AssetManager {
- private:
+ public:
   std::string ASSET_DIR;
-
+  
+private:
   std::string manifestContents;
   // TODO: It's incredibly inefficient to load every (even uninitialized) Asset
   // object into memory, like, do better

@@ -25,7 +25,7 @@ class App {
   App &operator=(const App &) = delete;
   static App &instance();
 
-  void begin();
+  void init();
   void tick();
   void render();
   
